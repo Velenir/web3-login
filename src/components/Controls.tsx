@@ -41,8 +41,6 @@ function useSendTx() {
   const { chain } = useNetwork()
 
   const { data: signer } = useSigner()
-  window.signer = signer
-  console.log("🚀 ~ useSendTx ~ signer", signer)
 
   const { data: txHash, mutate: sendTx } = useMutation({
     mutationKey: ["sendTX", chain?.id, address],
