@@ -19,6 +19,7 @@
   "devDependencies": {
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
+    "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
     "@linaria/react": "^4.3.0",
     "@linaria/rollup": "^4.2.2",
     "@types/react": "^18.0.24",
