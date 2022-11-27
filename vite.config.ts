@@ -1,7 +1,8 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 import linaria from '@linaria/rollup';
-import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
+import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
+import nodePolyfills from 'rollup-plugin-polyfill-node';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -25,5 +26,14 @@ export default defineConfig({
         })
       ]
     }
-  }
+  },
+  build: {
+    rollupOptions: {
+        plugins: [
+            // Enable rollup polyfills plugin
+            // used during production bundling
+            nodePolyfills()
+        ]
+    }
+}
 })
