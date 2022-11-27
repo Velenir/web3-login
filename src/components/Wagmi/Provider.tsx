@@ -11,7 +11,6 @@ import { publicProvider } from 'wagmi/providers/public'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
-import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 import React from 'react'
 
 
@@ -40,13 +39,11 @@ const client = createClient({
         qrcode: true,
       },
     }),
-    new MetaMaskConnector({ chains }),
     new InjectedConnector({
       chains,
       options: {
         name: 'Injected',
         shimDisconnect: true,
-        shimChainChangedDisconnect: true,
       },
     }),
   ],
