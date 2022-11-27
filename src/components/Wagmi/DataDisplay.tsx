@@ -26,6 +26,4 @@ export const AccountData = (): JSX.Element | null => {
       {balance && <div>Balance: {balance?.formatted} {balance.symbol}</div>}
     </>
   )
-
-  return null
 }
