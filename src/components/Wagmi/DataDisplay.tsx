@@ -1,7 +1,7 @@
 import { useAccount, useNetwork, useBalance } from "wagmi"
 import { styled } from "@linaria/react"
 
-const AddressDisplay = styled.span`
+export const AddressDisplay = styled.span`
   max-width: 12ch;
   overflow: hidden;
   text-overflow: ellipsis;

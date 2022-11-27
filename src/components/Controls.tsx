@@ -1,29 +1,37 @@
 import { useAccount, useDisconnect, useNetwork, useSigner, useProvider } from "wagmi"
 import { useMutation } from "@tanstack/react-query"
 import { assert } from "ts-essentials"
+import { styled } from "@linaria/react"
 
 import { useOpenConnectModal } from "../state/modals"
 import { Control } from "./Control"
+import { AddressDisplay } from "./Wagmi/DataDisplay"
 
 export const GetChainId = (): JSX.Element => {
-  const {chainId, getChainId} = useGetChainID()
+  const { chainId, getChainId } = useGetChainID()
   const value = chainId && `Chain ID: ${chainId}`
 
-  return <Control label="Get ChainID" onClick={getChainId} value={value}/>
+  return <Control label="Get ChainID" onClick={getChainId} value={value} />
 }
 
 export const GetBalance = (): JSX.Element => {
   const { balance, getBalance } = useGetBalance()
-  const {chain} = useNetwork()
+  const { chain } = useNetwork()
 
-  const readableBalance = balance && `Balance: ${(+balance.toString()/1e18)} ${chain?.nativeCurrency?.symbol || ""}`
+  const readableBalance = balance && `Balance: ${(+balance.toString() / 1e18)} ${chain?.nativeCurrency?.symbol || ""}`
 
   return <Control label="Get Balance" onClick={getBalance} value={readableBalance} />
 }
 
+const TxDisplay = styled(AddressDisplay)`
+  max-width: 20ch
+`
+
 export const SendTx = (): JSX.Element => {
   const { txHash, sendTx } = useSendTx()
-  return <Control label="Send Transaction" onClick={sendTx} value={txHash} />
+
+  const value = txHash && <TxDisplay>{txHash}</TxDisplay>
+  return <Control label="Send Transaction" onClick={sendTx} value={value} />
 }
 
 export const LogOut = (): JSX.Element => {
